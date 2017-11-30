@@ -1,9 +1,8 @@
 var API_KEY = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImVlMDJlNDYxODhjYzExZDg0N2Y1Mzg5MmFjMTkxOTcwZjI0NmE5NWU5ZGI3ZTVlZjliY2RlZTliYjg2MTQ4MGYyYTA3NjcwM2ZjNGE3ZTIwIn0.eyJhdWQiOiIxMCIsImp0aSI6ImVlMDJlNDYxODhjYzExZDg0N2Y1Mzg5MmFjMTkxOTcwZjI0NmE5NWU5ZGI3ZTVlZjliY2RlZTliYjg2MTQ4MGYyYTA3NjcwM2ZjNGE3ZTIwIiwiaWF0IjoxNTA5NjQyNjkwLCJuYmYiOjE1MDk2NDI2OTAsImV4cCI6MTgyNTE3NTQ5MCwic3ViIjoiNzc2Iiwic2NvcGVzIjpbInVzZXJCYXNlSW5mbyIsInVzZXJEZXRhaWxlZEluZm8iLCJ1c2VyQ291cnNlSW5mbyJdfQ.L-sws3bNcvKtRg1PKyY6PqeM7FwRAW-uvLCRAqOp4C639v_iJ9YMy5l6bOuJqeH1yrOwz6fPjRsbRzXWzX_x-l6nb7kH098a17QN_rzh_CVjfApG6_OIs_6g9GepJeVZ3j87lDRC5TKZsI4HyOYw24TuQ-uVd9jAJAkBTGhJtuaKSumZKt-hUu6tPTHESjIpiBYXxe8QkJVYkr5ZZBEFtuJkGgyh2Wh0DHvD5cdmsJe9rXVVXktAMaAqbOAWVXbkrN5t67ZP-mfCA6wPzJ2LeB5lmnJEmB3CvsWWQDjBO6rGpmRzuy-5MbfuQUI3iBjERg4ZZBcbqmFSaKOt8yVFGSOV8LDbHiYGWvj0sUVJS5fPCptuMVdFFRVv2sRBHxNFdczoWmA-sqQ3OeHGrB-8JiR4rf92Q9zCcMW42Zo0T4BQ7U8iRQWBP6ffWwj0gyf4kKPUQrMxallBcnYoclvwxqN5TAUQQ823jHomQGHVD9A_aWy_uhDP97ltybG6mM8M08JLk5yDm72t65dRlv7GrESm4ARz3UQNgoqpUqTG44WUuynpqSHGwv62lRQzTPC0T11C9-EznAoswGbpJpODDYf52bp7XN6ILjYMIlvH7920GQ9s-agYyvh3thO9c3ZNIYwShJBE6G-RQoJgVbinyWJp1fuB9xkf8haL6Z2a2oc';
-var myId = 776;
 var client = new INTITAClient({
   key: API_KEY,
 });
-client.getUserDetails(myId, function (error, data) {
+client.getUserDetails(function (error, data) {
   console.log(data);
   document.getElementById('avatar').src = data.avatar;
   document.getElementById('firstName').innerHTML = data.firstName + " " + data.secondName;
@@ -19,12 +18,8 @@ client.getUserDetails(myId, function (error, data) {
     elem.appendChild(p);
     p.innerHTML  = list[i];
   }
-
-//    console.log(error, data)
 });
-
-client.getUserCoursesAndModules(myId, function (error, data) {
-  //console.log(data);
+client.getUserCoursesAndModules(function (error, data) {
   data.courses.forEach(function (element){
     var id = element.id;
     var elem = document.querySelector('#courses > div > div > div');
@@ -59,8 +54,6 @@ client.getUserCoursesAndModules(myId, function (error, data) {
         elemModule.appendChild(div_row);
       }
       modules.forEach(function (module){
-//        console.log(module);
-        //console.log((index_row % 4) == 0);
         var div = document.createElement("div");
         div.className = "6u 12u(mobile)";
         var article = document.createElement("article");
@@ -72,7 +65,6 @@ client.getUserCoursesAndModules(myId, function (error, data) {
         article.appendChild(h3);
         h3.appendChild(a);
         client.getModuleInfo(module.id, function (error, mInfo) {
-          // console.log(mInfo);
           var title_module = mInfo.title_en;
           if (title_module == ''){
             title_module = mInfo.title_ru;
@@ -97,11 +89,3 @@ client.getUserCoursesAndModules(myId, function (error, data) {
     });
   });
 });
-/*
-client.getModuleTags(1, function(error, data) {
-  console.log(error, data);
-});
-client.getCourseTags(1, function(error, data) {
-  console.log(error, data);
-});
-*/
