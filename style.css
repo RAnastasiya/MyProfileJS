@@ -24,14 +24,14 @@ b, strong {
 i, em {
 	font-style: italic;
 }
-h1, h2, h3, h4, h5, h6 {
+h1, h2 {
 	color: #3e3e3e;
 }
-h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+h1 a, h2 a, h3 a{
 	text-decoration: none;
 	color: inherit;
 }
-h2, h3, h4, h5, h6 {
+h2, h3 {
 	font-weight: 700;
 }
 h1 {
@@ -248,7 +248,7 @@ ul.social {
 		letter-spacing: -0.015em;
 	}
 
-	h1, h2, h3, h4, h5, h6 {
+	h1, h2, h3 {
 		margin: 0 0 0.75em 0;
 	}
 
@@ -269,31 +269,13 @@ ul.social {
 			font-size: 1.25em;
 		}
 
-/* Form */
-
-	form input[type="button"],
-	form input[type="submit"],
-	form input[type="reset"],
-	form button,
-	form .button {
-		margin: 0 0.5em 0 0.5em;
-	}
-
 /* Button */
 
-	input[type="button"],
-	input[type="submit"],
-	input[type="reset"],
-	button,
 	.button {
 		padding: 1em 2.35em 1em 2.35em;
 		font-size: 1.1em;
 	}
 
-		input[type="button"].big,
-		input[type="submit"].big,
-		input[type="reset"].big,
-		button.big,
 		.button.big {
 			font-size: 1.5em;
 			letter-spacing: -0.025em;
