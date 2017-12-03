@@ -19,16 +19,17 @@ client.getUserDetails(function (error, data) {
     p.innerHTML  = list[i];
   }
 });
+
 client.getUserCoursesAndModules(function (error, data) {
   data.courses.forEach(function (element){
     var id = element.id;
-    var elem = document.querySelector('#courses > div > div > div');
+    var elem = document.querySelector('#courses_div');
     client.getCourseInfo(id, function (error, data) {
       var sect = document.createElement("section");
       var el_span = document.createElement("span");
       el_span.className = "icon featured fa-comments-o";
       var h3 = document.createElement("h3");
-      sect.className = "box style1 {id}".replace('{id}', id);
+      sect.className = "box style1 " + id;
       sect.appendChild(el_span);
       sect.appendChild(h3);
       h3.innerHTML  = data.title_en;  // Web developer (PHP)
@@ -79,7 +80,8 @@ client.getUserCoursesAndModules(function (error, data) {
               list.push(lecture.title);
               list.push('\n');
           });
-          a.setAttribute('title', list);
+          var energy = list.join("");
+          a.setAttribute('title', energy);
         });
         article.appendChild(p);
         div.appendChild(article);
